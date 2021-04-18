@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: "This job will review the code base of the frontend directory"
+      - run: echo "This job will review the code base of the frontend directory"
       - run: echo "This job is now running on a ${{ runner.os }} server"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: "This job will review the code base of the backend directory"
+      - run: echo "This job will review the code base of the backend directory"
       - run: echo "This job is now running on a ${{ runner.os }} server"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
