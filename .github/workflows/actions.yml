@@ -2,83 +2,83 @@ name: Code Review
 
 on: [push, pull_request]
 
-jobs:
-  Review-Frontend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
+  jobs:
+    Review-Frontend:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./frontend
 
-    strategy:
-      matrix:
-        node-version: [12.x]
+      strategy:
+        matrix:
+          node-version: [12.x]
 
-    steps:
-      -run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      -run: "This job will review the code base of the frontend directory"
-      -run: echo "This job is now running on a ${{ runner.os }} server"
-      -run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      steps:
+        -run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+        -run: "This job will review the code base of the frontend directory"
+        -run: echo "This job is now running on a ${{ runner.os }} server"
+        -run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
-      -name: Checkout repository
-      uses: actions/checkout@v2
+        -name: Checkout repository
+        uses: actions/checkout@v2
 
-      -run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+        -run: echo "The ${{ github.repository }} repository has been cloned to the runner."
 
-      -name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        working-directory: ./frontend
-        node-version: ${{ matrix.node-version }}
+        -name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          working-directory: ./frontend
+          node-version: ${{ matrix.node-version }}
 
-      -name: Install dependencies
-      run: npm install
+        -name: Install dependencies
+        run: npm install
 
-      -run: echo "🖥️ The workflow is now ready to test your code on the runner."
+        -run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
-      -name: Run tests
-      run: npm test
+        -name: Run tests
+        run: npm test
 
-      -name: Run linter
-      run: npm lint
+        -name: Run linter
+        run: npm lint
 
-      -run: echo "This job's status is ${{ job.status }}."
+        -run: echo "This job's status is ${{ job.status }}."
 
-  Review-Backend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
+    Review-Backend:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./backend
 
-    strategy:
-      matrix:
-        node-version: [12.x]
+      strategy:
+        matrix:
+          node-version: [12.x]
 
-    steps:
-      -run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      -run: "This job will review the code base of the backend directory"
-      -run: echo "This job is now running on a ${{ runner.os }} server"
-      -run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      steps:
+        -run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+        -run: "This job will review the code base of the backend directory"
+        -run: echo "This job is now running on a ${{ runner.os }} server"
+        -run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
-      -name: Checkout repository
-      uses: actions/checkout@v2
+        -name: Checkout repository
+        uses: actions/checkout@v2
 
-      -run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+        -run: echo "The ${{ github.repository }} repository has been cloned to the runner."
 
-      -name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        working-directory: ./backend
-        node-version: ${{ matrix.node-version }}
+        -name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          working-directory: ./backend
+          node-version: ${{ matrix.node-version }}
 
-      -name: Install dependencies
-      run: npm install
+        -name: Install dependencies
+        run: npm install
 
-      -run: echo "🖥️ The workflow is now ready to test your code on the runner."
+        -run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
-      -name: Run tests
-      run: npm test
+        -name: Run tests
+        run: npm test
 
-      -name: Run linter
-      run: npm lint
+        -name: Run linter
+        run: npm lint
 
-      -run: echo "This job's status is ${{ job.status }}."
+        -run: echo "This job's status is ${{ job.status }}."
