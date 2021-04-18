@@ -1,5 +1,9 @@
 name: Code Review
-on: [push, pull_request]
+
+on: 
+  push:
+  pull_request:
+  
 jobs:
   Review-Frontend:
     runs-on: ubuntu-latest
