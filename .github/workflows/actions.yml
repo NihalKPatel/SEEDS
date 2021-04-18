@@ -37,6 +37,9 @@ jobs:
       - name: Run tests
       run: npm test
 
+      - name: Run linter
+      run: npm lint
+
       - run: echo "This job's status is ${{ job.status }}."
 
   Review-Backend:
@@ -72,5 +75,8 @@ jobs:
 
       - name: Run tests
       run: npm test
+
+      - name: Run linter
+      run: npm lint
 
       - run: echo "This job's status is ${{ job.status }}."
