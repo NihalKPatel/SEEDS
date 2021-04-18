@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+      "mongodb+srv://binxlola:<password>@tutorial5-cluster.wnjia.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  }
