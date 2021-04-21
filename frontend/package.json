@@ -16,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "app": "nodemon react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src"
@@ -43,6 +44,7 @@
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1"
   }
 }

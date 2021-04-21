@@ -1,6 +1,11 @@
-const express = require("express")
-const cors = require("cors")
-const connectDB = require("./config/db")
+import express from "express"
+import cors from "cors"
+// eslint-disable-next-line import/extensions
+import connectDB from "./config/db.js"
+
+// routes
+// eslint-disable-next-line import/extensions
+import practices from "./routes/api/practices.js"
 
 const app = express()
 
@@ -9,9 +14,12 @@ connectDB()
 
 // cors
 app.use(cors({ origin: true, credentials: true }))
+
 // Init Middleware
 app.use(express.json({ extended: false }))
+
 // use Routes
+app.use("/api/practices", practices)
 
 app.get("/", (req, res) => res.send("Hello world!"))
 

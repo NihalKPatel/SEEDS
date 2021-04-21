@@ -11,6 +11,12 @@
     ],
     "rules": {
         "semi": 0,
+        "no-unused-vars": "warn",
+        "react/no-unused-state": 0,
+        "react/destructuring-assignment": 0,
+        "react/prop-types": 0,
+        "no-underscore-dangle": "warn",
+        "react/no-array-index-key": 0,
         "react/jsx-filename-extension": [
             1, 
             {"extensions": 
