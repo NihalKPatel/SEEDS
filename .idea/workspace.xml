@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1fd0584-0d29-4228-ab6f-057c616548c7" name="Default Changelist" comment="" />
+
+    <list default="true" id="b1fd0584-0d29-4228-ab6f-057c616548c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/ .env" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,7 +12,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
+
   </component>
   <component name="ProjectId" id="1rPLorPkmwnNzTtKw4LP1K4oSHT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -65,7 +68,8 @@
       <workItem from="1618891339563" duration="103000" />
       <workItem from="1618891448927" duration="50000" />
       <workItem from="1618891520883" duration="1191000" />
-      <workItem from="1618992436553" duration="368000" />
+
+
     </task>
     <servers />
   </component>
