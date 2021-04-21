@@ -16,7 +16,7 @@ router.get("/test", (req, res) => res.send("practice route testing!"))
 // @route GET api/books
 // @description Get all practices
 // @access Public
-router.get("/", (req, res) => {
+router.get("/search-results", (req, res) => {
   Practice.find()
     .then((practices) => res.json(practices))
     // eslint-disable-next-line no-unused-vars
