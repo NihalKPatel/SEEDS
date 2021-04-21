@@ -1,4 +1,4 @@
-import evidence from "./Evidence"
+import evidence from "./Evidence.js"
 
 const mongoose = require("mongoose")
 
@@ -16,10 +16,3 @@ const SubmitterSchema = new mongoose.Schema({
     required: true,
   },
 })
-
-<<<<<<< HEAD
-const Submitter = mongoose.model("Submitter", SubmitterSchema)
-module.exports = Submitter
-=======
-mongoose.model("Submitter", SubmitterSchema)
->>>>>>> parent of 63cb50f... done

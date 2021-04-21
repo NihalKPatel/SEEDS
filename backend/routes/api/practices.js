@@ -1,9 +1,6 @@
-// routes/api/books.js
-
 import express from "express"
 
 // Load Practice model
-// eslint-disable-next-line import/extensions
 import Practice from "../../models/Practice.js"
 
 const router = express.Router()

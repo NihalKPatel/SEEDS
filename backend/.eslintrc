@@ -11,6 +11,7 @@
     ],
     "rules": {
         "semi": 0,
+        "import/extensions": 1,
         "react/jsx-filename-extension": [
             1, 
             {"extensions": 

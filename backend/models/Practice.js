@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/extensions
 import mongoose from "mongoose"
-// eslint-disable-next-line import/extensions
 import evidence from "./Evidence.js"
 
 // eslint-disable-next-line no-unused-vars

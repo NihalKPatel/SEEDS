@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
+import { PlusCircle, ViewList } from "react-bootstrap-icons"
 
 class Navbar extends Component {
   constructor(props) {
@@ -41,17 +43,17 @@ class Navbar extends Component {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+              <li className="nav-item mr-2">
+                <Link to="/create-practice" className="btn btn-outline-primary">
+                  <PlusCircle />
+                  Add New Practice
+                </Link>
               </li>
-              <li className="nav-item">
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className="nav-link" href="#">
-                  Link
-                </a>
+              <li className="nav-item mr-2">
+                <Link to="/" className="btn btn-outline-primary">
+                  <ViewList />
+                  <i className="view-list" /> Practice Repository
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -101,7 +103,7 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <form className="d-flex" return false>
+            <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"

@@ -48,12 +48,6 @@ class ShowPracticeList extends Component {
             </div>
 
             <div className="col-md-11">
-              <Link
-                to="/create-practice"
-                className="btn btn-outline-warning float-right"
-              >
-                + Add New Book
-              </Link>
               <br />
               <br />
               <hr />
