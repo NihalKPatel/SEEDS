@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import axios from "axios"
 import { Link } from "react-router-dom"
 import { PlusCircle, ViewList } from "react-bootstrap-icons"
 
@@ -15,12 +14,6 @@ class Navbar extends Component {
     this.setState({
       searchQuery: event.target.value,
     })
-  }
-
-  handleSearchButtonClicked() {
-    const { searchQuery } = this.state
-
-    window.location.href = `/${searchQuery}`
   }
 
   render() {
@@ -112,13 +105,13 @@ class Navbar extends Component {
                 value={this.state.searchQuery}
                 onChange={this.handleSearchInputChanged.bind(this)}
               />
-              <button
-                type="button"
+              <Link
+                to={`/${this.state.searchQuery}`}
                 className="btn btn-outline-success"
-                onClick={this.handleSearchButtonClicked.bind(this)}
+                onClick={() => this.setState({ searchQuery: "" })}
               >
                 Search
-              </button>
+              </Link>
             </form>
           </div>
         </div>

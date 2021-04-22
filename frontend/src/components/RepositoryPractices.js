@@ -3,23 +3,21 @@ import "../App.css"
 import axios from "axios"
 import PracticeCard from "./PracticeCard"
 
-class RepositorySearchResults extends Component {
+class RepositoryPractices extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: [],
+      practices: [],
     }
   }
 
   componentDidMount() {
-    this.handleGetData()
+    this.handleGetData(this.props.location)
   }
 
-  handleGetData() {
+  handleGetData(params) {
     axios
-      .get(
-        `http://localhost:8082/api/practices/repository-search/${this.props.match.params.query}`
-      )
+      .get(`http://localhost:8082/api/practices/repository-practices`)
       .then((res) => {
         this.setState({
           practices: res.data,
@@ -48,9 +46,7 @@ class RepositorySearchResults extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">
-                Search Results for {this.props.match.params.query}
-              </h2>
+              <h2 className="display-4 text-center">Practice List</h2>
             </div>
 
             <div className="col-md-11">
@@ -67,4 +63,4 @@ class RepositorySearchResults extends Component {
   }
 }
 
-export default RepositorySearchResults
+export default RepositoryPractices
