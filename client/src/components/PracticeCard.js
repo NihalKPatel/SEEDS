@@ -13,9 +13,9 @@ const PracticeCard = (props) => {
       />
       <div className="desc">
         <h2>
-          <Link to={`/show-practice/${practice._id}`}>{practice.title}</Link>
+          <Link to={`/show-practice/${practice._id}`}>{practice.name}</Link>
         </h2>
-        <h3>{practice.author}</h3>
+        <h3>{practice.nameAbbreviated}</h3>
         <p>{practice.description}</p>
       </div>
     </div>

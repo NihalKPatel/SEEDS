@@ -5,20 +5,33 @@ import Practice from "../../models/Practice.js"
 
 const router = express.Router()
 
-// @route GET api/practices/test
-// @description tests books route
-// @access Public
-router.get("/test", (req, res) => res.send("practice route testing!"))
-
-// @route GET api/books
+// @route GET api/repository-practices
 // @description Get all practices
 // @access Public
-router.get("/search-results", (req, res) => {
+router.get("/repository-practices", (req, res) => {
   Practice.find()
     .then((practices) => res.json(practices))
     // eslint-disable-next-line no-unused-vars
     .catch((err) =>
-      res.status(404).json({ nobooksfound: "No Practices Found" })
+      res.status(404).json({
+        emptyRepository: "There are no SE practices in the repository",
+      })
+    )
+})
+
+// @route GET api/repository-search/:query
+// @description Get with name or nameAbbreviated which matches the query
+// @access Public
+router.get("/repository-search/:query", (req, res) => {
+  Practice.find({
+    $or: [{ name: req.params.query }, { nameAbbreviated: req.params.query }],
+  })
+    .then((practices) => res.json(practices))
+    // eslint-disable-next-line no-unused-vars
+    .catch((err) =>
+      res.status(404).json({
+        noSearchResult: "There are no matching results in the repository",
+      })
     )
 })
 
@@ -37,13 +50,13 @@ router.get("/:id", (req, res) => {
 // @route GET api/practices
 // @description add/save practice
 // @access Public
-router.post("/", (req, res) => {
-  Practice.create(req.body)
-    // eslint-disable-next-line no-unused-vars
-    .then((practice) => res.json({ msg: "Practice added successfully" }))
-    // eslint-disable-next-line no-unused-vars
-    .catch((err) => res.status(400).json({ error: "Unable to add this book" }))
-})
+// router.post("/", (req, res) => {
+//   Practice.create(req.body)
+//     // eslint-disable-next-line no-unused-vars
+//     .then((practice) => res.json({ msg: "Practice added successfully" }))
+//     // eslint-disable-next-line no-unused-vars
+//     .catch((err) => res.status(400).json({ error: "Unable to add this book" }))
+// })
 
 // @route GET api/practices/:id
 // @description Update practice

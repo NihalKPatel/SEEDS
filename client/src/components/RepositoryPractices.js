@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import "../App.css"
 import axios from "axios"
-import { Link } from "react-router-dom"
 import PracticeCard from "./PracticeCard"
 
-class ShowPracticeList extends Component {
+class RepositoryPractices extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,8 +12,12 @@ class ShowPracticeList extends Component {
   }
 
   componentDidMount() {
+    this.handleGetData(this.props.location)
+  }
+
+  handleGetData(params) {
     axios
-      .get("http://localhost:8082/api/practices")
+      .get(`http://localhost:8082/api/practices/repository-practices`)
       .then((res) => {
         this.setState({
           practices: res.data,
@@ -27,14 +30,13 @@ class ShowPracticeList extends Component {
 
   render() {
     const { practices } = this.state
-    console.log(`PrintBook: ${practices}`)
     let practiceList
 
     if (!practices) {
       practiceList = "there is no book record!"
     } else {
-      practiceList = practices.map((book, k) => (
-        <PracticeCard book={book} key={k} />
+      practiceList = practices.map((practice, k) => (
+        <PracticeCard practice={practice} key={k} />
       ))
     }
 
@@ -61,4 +63,4 @@ class ShowPracticeList extends Component {
   }
 }
 
-export default ShowPracticeList
+export default RepositoryPractices

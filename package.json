@@ -2,11 +2,13 @@
   "name": "seeds",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "app": "nodemon app.js",
+    "start": "node server.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./"
   },
@@ -32,7 +34,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
-    "babel-eslint": "^10.0.0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.2.0",
