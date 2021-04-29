@@ -22,8 +22,6 @@ app.use(express.urlencoded({ extended: false }))
 // use Routes
 app.use("/api/practices", practices)
 
-app.get("/", (req, res) => res.send("Hello world!"))
-
 const port = process.env.PORT || 8082
 
 if (process.env.NODE_ENV === "production") {
