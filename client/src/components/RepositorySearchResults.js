@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "../App.css"
 import axios from "axios"
+import baseURL from "../config"
 import PracticeCard from "./PracticeCard"
 
 class RepositorySearchResults extends Component {
@@ -18,7 +19,7 @@ class RepositorySearchResults extends Component {
   handleGetData() {
     axios
       .get(
-        `http://localhost:8082/api/practices/repository-search/${this.props.match.params.query}`
+        `${baseURL}/api/practices/repository-search/${this.props.match.params.query}`
       )
       .then((res) => {
         this.setState({
