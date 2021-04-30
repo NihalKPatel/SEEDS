@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import "../App.css"
 import axios from "axios"
+import { Link } from "react-router-dom"
+import baseURL from "../config"
+import "../App.css"
 
 class showPracticeDetails extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class showPracticeDetails extends Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:8082/api/books/${this.props.match.params.id}`)
+      .get(`${baseURL}/api/books/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
           book: res.data,
@@ -26,7 +27,7 @@ class showPracticeDetails extends Component {
 
   onDeleteClick(id) {
     axios
-      .delete(`http://localhost:8082/api/books/${id}`)
+      .delete(`${baseURL}/api/books/${id}`)
       .then((res) => {
         this.props.history.push("/")
       })

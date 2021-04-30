@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import "../App.css"
 import axios from "axios"
+import baseURL from "../config"
+import "../App.css"
 
 class CreatePractice extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class CreatePractice extends Component {
     }
 
     axios
-      .post("http://localhost:8082/api/practices", data)
+      .post(`${baseURL}/api/practices`, data)
       .then((res) => {
         this.setState({
           name: "",

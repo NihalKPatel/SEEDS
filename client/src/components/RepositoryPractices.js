@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "../App.css"
 import axios from "axios"
+import baseURL from "../config"
 import PracticeCard from "./PracticeCard"
 
 class RepositoryPractices extends Component {
@@ -17,7 +18,7 @@ class RepositoryPractices extends Component {
 
   handleGetData(params) {
     axios
-      .get(`http://localhost:8082/api/practices/repository-practices`)
+      .get(`${baseURL}/api/practices/repository-practices`)
       .then((res) => {
         this.setState({
           practices: res.data,
