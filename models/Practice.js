@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import evidence from "./Evidence.js"
 
 // eslint-disable-next-line no-unused-vars
 const PracticeSchema = new mongoose.Schema({
@@ -24,12 +23,8 @@ const PracticeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  acceptedEvidence: {
-    type: [evidence.schema],
-    required: false,
-  },
-  evidenceSubmissions: {
-    type: [evidence.schema],
+  claims: {
+    type: [mongoose.Schema.Types.ObjectId],
     required: false,
   },
 })

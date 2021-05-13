@@ -5,8 +5,7 @@ import path from "path"
 import connectDB from "./config/db.js"
 
 // routes
-// eslint-disable-next-line import/extensions
-import practices from "./routes/api/practices.js"
+import repository from "./routes/api/repository.js"
 
 const app = express()
 
@@ -21,7 +20,7 @@ app.use(express.json({ extended: false }))
 app.use(express.urlencoded({ extended: false }))
 
 // use Routes
-app.use("/api/practices", practices)
+app.use("/", repository)
 
 const port = process.env.PORT || 8082
 

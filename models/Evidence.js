@@ -5,13 +5,10 @@ const EvidenceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  publishedDate: {
-    type: Date,
-    required: true,
-  },
   submitter: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    required: false,
   },
   attributes: {
     type: Map,
