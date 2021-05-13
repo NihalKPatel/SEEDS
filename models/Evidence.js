@@ -14,6 +14,10 @@ const EvidenceSchema = new mongoose.Schema({
     type: Map,
     of: String,
   },
+  dateSubmitted: {
+    type: Date,
+    default: Date.now,
+  },
 })
 
 const Evidence = mongoose.model("Evidence", EvidenceSchema)

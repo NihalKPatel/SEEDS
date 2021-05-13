@@ -43,7 +43,7 @@ class CreatePractice extends Component {
 
   render() {
     return (
-      <div className="CreatePractice">
+      <div className="MainBackground vh-100">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">

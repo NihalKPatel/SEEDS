@@ -20,11 +20,15 @@ const ClaimCard = (props) => {
               <button
                 type="button"
                 className="btn btn-sm btn-outline-light"
-                onClick={props.toggleModal}
+                onClick={() => props.toggleModal("view", claim)}
               >
                 View
               </button>
-              <button type="button" className="btn btn-sm btn-outline-light">
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-light"
+                onClick={() => props.toggleModal("edit", claim)}
+              >
                 Edit
               </button>
             </div>
