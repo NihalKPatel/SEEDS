@@ -18,9 +18,7 @@ class RepositorySearchResults extends Component {
 
   handleGetData() {
     axios
-      .get(
-        `${baseURL}/api/practices/repository-search/${this.props.match.params.query}`
-      )
+      .get(`${baseURL}/repository-search/${this.props.match.params.query}`)
       .then((res) => {
         this.setState({
           practices: res.data,

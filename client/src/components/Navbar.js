@@ -37,15 +37,21 @@ class Navbar extends Component {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item mr-2">
-                <Link to="/create-practice" className="btn btn-outline-primary">
-                  <PlusCircle />
+                <Link
+                  to="/create-practice"
+                  className="btn btn-outline-primary d-flex align-items-center"
+                >
+                  <PlusCircle className="mr-2" />
                   Add New Practice
                 </Link>
               </li>
               <li className="nav-item mr-2">
-                <Link to="/" className="btn btn-outline-primary">
-                  <ViewList />
-                  <i className="view-list" /> Practice Repository
+                <Link
+                  to="/"
+                  className="btn btn-outline-primary d-flex align-items-center"
+                >
+                  <ViewList className="mr-2" />
+                  Practice Repository
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -106,7 +112,7 @@ class Navbar extends Component {
                 onChange={this.handleSearchInputChanged.bind(this)}
               />
               <Link
-                to={`/${this.state.searchQuery}`}
+                to={`/search/${this.state.searchQuery}`}
                 className="btn btn-outline-success"
                 onClick={() => this.setState({ searchQuery: "" })}
               >

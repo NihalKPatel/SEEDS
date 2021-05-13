@@ -27,7 +27,7 @@ class CreatePractice extends Component {
     }
 
     axios
-      .post(`${baseURL}/api/practices`, data)
+      .post(`${baseURL}/practice/create`, data)
       .then((res) => {
         this.setState({
           name: "",

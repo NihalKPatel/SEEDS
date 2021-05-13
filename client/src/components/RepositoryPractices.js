@@ -18,7 +18,7 @@ class RepositoryPractices extends Component {
 
   handleGetData(params) {
     axios
-      .get(`${baseURL}/api/practices/repository-practices`)
+      .get(`${baseURL}/repository-practices`)
       .then((res) => {
         this.setState({
           practices: res.data,
