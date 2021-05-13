@@ -42,7 +42,7 @@ class RepositoryPractices extends Component {
     }
 
     return (
-      <div className="ShowPracticeList">
+      <div className="MainBackground min-vw-100 min-vh-100 w-100 h-100">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

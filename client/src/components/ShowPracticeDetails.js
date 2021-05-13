@@ -3,7 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import baseURL from "../config"
 import "../App.css"
-import AddClaimModal from "./AddClaimModal"
+import ClaimModal from "./ClaimModal"
 import ClaimCard from "./ClaimCard"
 
 class showPracticeDetails extends Component {
@@ -13,6 +13,8 @@ class showPracticeDetails extends Component {
       practice: {},
       claims: [],
       isOpen: false,
+      modelType: "",
+      modalClaim: {},
     }
     this.toggleClaimModal = this.toggleClaimModal.bind(this)
     this.ref = React.createRef()
@@ -41,9 +43,12 @@ class showPracticeDetails extends Component {
       })
   }
 
-  toggleClaimModal() {
+  toggleClaimModal(modalType, modalClaim) {
+    console.log(modalClaim)
     this.setState((state) => ({
       isOpen: !state.isOpen,
+      modalType: typeof modalType !== "undefined" ? modalType : "",
+      modalClaim: typeof modalClaim !== "undefined" ? modalClaim : {},
     }))
   }
 
@@ -60,10 +65,12 @@ class showPracticeDetails extends Component {
     }
 
     return (
-      <div className="ShowPracticeDetails">
-        <AddClaimModal
+      <div className="MainBackground min-vh-100 min-vw-100 h-100 w-100">
+        <ClaimModal
+          claim={this.state.modalClaim}
           toggleModal={this.toggleClaimModal}
           isOpen={this.state.isOpen}
+          modalType={this.state.modalType}
           practice={this.state.practice}
         />
 
@@ -101,8 +108,8 @@ class showPracticeDetails extends Component {
               </div>
               <div
                 className="col-md-6 btn btn-outline-success btn-lg btn-block mx-auto"
-                onClick={this.toggleClaimModal}
-                onKeyDown={this.toggleClaimModal}
+                onClick={() => this.toggleClaimModal("add")}
+                onKeyDown={() => this.toggleClaimModal("add")}
                 tabIndex={0}
                 role="button"
               >

@@ -42,7 +42,7 @@ class RepositorySearchResults extends Component {
     }
 
     return (
-      <div className="ShowPracticeList">
+      <div className="MainBackground min-vh-100 min-vw-100 h-100 w-100">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

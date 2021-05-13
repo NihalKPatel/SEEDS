@@ -8,8 +8,9 @@ import { PlusCircle, Trash } from "react-bootstrap-icons"
 import evidenceAttributeInputs from "../evidenceUtil"
 import "../App.css"
 import baseURL from "../config"
+import ClaimCard from "./ClaimCard"
 
-class AddClaimModal extends Component {
+class ClaimModal extends Component {
   static addEvidenceAttribute() {
     const attr = document.getElementById("attrSelector").value
     const evidenceForm = document.getElementById("evidenceForm")
@@ -124,12 +125,68 @@ class AddClaimModal extends Component {
   }
 
   render() {
-    const isEdit = typeof this.props.id !== "undefined"
-    const title = isEdit ? "" : "Add New Claim"
+    const { modalType, isOpen, claim } = this.props
+    let title
+    let bodyToUse
+    let viewBody
+    let evidenceItems
+
+    if (typeof claim !== "undefined" && Object.keys(claim).length !== 0) {
+      evidenceItems = claim.evidence.map((evidence, k) => (
+        <div
+          className="d-flex flex-row border rounded border-light p-2 align-items-center justify-content-between"
+          id={evidence.title}
+          key={k}
+        >
+          <h5>{evidence.title}</h5>
+          <small>
+            Submitted:&nbsp;&nbsp;
+            {new Date(evidence.dateSubmitted).toLocaleDateString("en-NZ")}
+          </small>
+        </div>
+      ))
+
+      viewBody = (
+        <>
+          <Modal.Body className="d-flex flex-column MainBackground">
+            <div className="d-inline-flex w-100">
+              <div className="d-flex mr-3 flex-column w-50">
+                <h3 className="mb-3 text-center">
+                  <u>{claim.title}</u>
+                </h3>
+                <p
+                  className="border u p-2"
+                  style={{ minHeight: "calc(1.5em + .75rem + 2px)" }}
+                >
+                  {claim.description}
+                </p>
+              </div>
+              <div className="d-flex flex-column w-50">
+                <h4 className="text-center">Evidence</h4>
+                <div
+                  id="evidenceContainer"
+                  className="border border-light overflow-auto h-100 p-2"
+                >
+                  {evidenceItems}
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer className="MainBackground">
+            <Button
+              className="btn-outline-light btn-danger"
+              onClick={this.props.toggleModal}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </>
+      )
+    }
 
     const addBody = (
       <>
-        <Modal.Body className="d-flex flex-column">
+        <Modal.Body className="d-flex flex-column MainBackground">
           <form className="d-inline-flex w-100">
             <div className="d-flex mr-3 flex-column w-25">
               <input
@@ -150,7 +207,7 @@ class AddClaimModal extends Component {
               <h4 className="text-center">Evidence</h4>
               <div
                 id="evidenceContainer"
-                className="border border-primary overflow-auto h-75"
+                className="border border-light overflow-auto h-75"
               />
             </div>
           </form>
@@ -184,11 +241,11 @@ class AddClaimModal extends Component {
               ))}
             </select>
             <PlusCircle
-              className="btn-outline-primary mr-lg-5"
-              onClick={AddClaimModal.addEvidenceAttribute}
+              className="btn-outline-light mr-lg-5"
+              onClick={ClaimModal.addEvidenceAttribute}
             />
             <div
-              className="col-md-6 btn btn-outline-success btn-sm"
+              className="col-md-6 btn btn-outline-light btn-sm"
               tabIndex="0"
               role="button"
               onKeyDown={this.addEvidence}
@@ -198,11 +255,17 @@ class AddClaimModal extends Component {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={this.saveClaim}>
+        <Modal.Footer className="MainBackground">
+          <Button
+            className="btn-outline-light btn-success"
+            onClick={this.saveClaim}
+          >
             Add
           </Button>
-          <Button variant="secondary" onClick={this.props.toggleModal}>
+          <Button
+            className="btn-outline-light btn-danger"
+            onClick={this.props.toggleModal}
+          >
             Close
           </Button>
         </Modal.Footer>
@@ -212,19 +275,35 @@ class AddClaimModal extends Component {
       <>
         <Modal.Body>This is an edit modal</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={this.props.toggleModal}>
+          <Button variant="primary" onClick={() => this.props.toggleModal}>
             apply
           </Button>
-          <Button variant="secondary" onClick={this.props.toggleModal}>
+          <Button variant="secondary" onClick={() => this.props.toggleModal}>
             Close
           </Button>
         </Modal.Footer>
       </>
     )
-    const bodyToUse = isEdit ? editBody : addBody
+
+    switch (modalType) {
+      case "add":
+        bodyToUse = addBody
+        title = "Add New Claim"
+        break
+      case "edit":
+        bodyToUse = editBody
+        title = "Edit Claim"
+        break
+      case "view":
+        bodyToUse = viewBody
+        title = "View Claim"
+        break
+      default:
+        break
+    }
     return (
-      <Modal show={this.props.isOpen} backdrop="static" size="lg">
-        <Modal.Header>
+      <Modal show={isOpen} backdrop="static" size="lg">
+        <Modal.Header className="MainBackground">
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         {bodyToUse}
@@ -233,4 +312,4 @@ class AddClaimModal extends Component {
   }
 }
 
-export default AddClaimModal
+export default ClaimModal
